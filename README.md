@@ -1,5 +1,7 @@
 # Zool719-covid19
 
+See [Schedule here](https://docs.google.com/spreadsheets/d/1NJWmhJHhY_MuPiSu9Oii1-UA2HYzqlfMRqr88NlKtHs/edit#gid=0)
+
 1. January 12 Organizational meeting
 
 2. January 19 Literature sharing  
