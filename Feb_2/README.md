@@ -8,7 +8,7 @@
 [Dr. Altenberg](http://dynamics.org) will take us through computing confidence intervals on pandemic curves. He says Wikipedia level background is enough
 Suggested Background Reading:  
 * [Poisson Distribution](https://en.wikipedia.org/wiki/Poisson_distribution)  
-* [Taylorʻs Law](https://en.wikipedia.org/wiki/Taylor%27s_law)
+* [Taylorʻs Law](https://en.wikipedia.org/wiki/Taylor%27s_law) You can read the original [1961 paper](Taylor1961.pdf) here - only 3 pages, and 2 of them are a figure and a table!
 
 He will be using Mathematica, which you are welcome to use. We can follow also along in R using `expression( )` to hold our symbolic math and `eval()` to evaluate the math:
 ```
