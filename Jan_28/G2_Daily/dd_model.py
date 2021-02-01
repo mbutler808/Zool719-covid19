@@ -33,8 +33,8 @@ from hdc_api.sheets import get_test_positivity, get_rt, get_cases
 #########################################################
 
 # Formats dates to reflect the following example: 9/7/2020 or 2020-9-7 (# or - represents removing 0s)
-format_date_str = "%#m/%#d/%Y" # PC
-#format_date_str = "%-m/%-d/%Y" # Mac/Linux
+#format_date_str = "%#m/%#d/%Y" # PC
+format_date_str = "%-m/%-d/%Y" # Mac/Linux
 
 # Load historical COVID data from Coivdtracking.org (Updates ~13:00 HST)
 state_df = get_state_data('HI', format_date_str)
