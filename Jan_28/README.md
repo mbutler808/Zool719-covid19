@@ -1,6 +1,5 @@
 # Jan 28 Hawaii COVID19 model and Forecasting  
 
-See [Schedule here](https://docs.google.com/spreadsheets/d/1NJWmhJHhY_MuPiSu9Oii1-UA2HYzqlfMRqr88NlKtHs/edit#gid=0)  
 Back to [home](..)  
 
 1. Review lecture with R code <https://web.stanford.edu/~jhj1/teachingdocs/Jones-Epidemics050308.pdf>
@@ -9,5 +8,5 @@ Back to [home](..)
   a. [Lecture](./COVID-19 Models Presentation.pdf)  
   b. [G2 package](./G2_Daily)  
   c. [code powerpoint](./Code_overview.pptx)  
-
+  
 Next: [Feb 9](./Feb_9) Lee Altenberg - Exponential growth model and methods to obtain confidence intervals  
