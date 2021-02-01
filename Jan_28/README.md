@@ -11,7 +11,7 @@ Schedule:
 ## Guest Lecture by Levi Dantzinger, Bobby Do, and [Victoria Fan](https://www.hawaii.edu/aging/phac/victoria-fan/) from Dr. Fanʻs group  
 Developers of the HiPAM COVID19 model for Hawaii and forecasts at http://hipam.org   
   a. [Lecture pdf](./COVID-19_Models_Presentation.pdf)  
-  b. [G2 package](./G2_Daily)  
+  b. [G2 package notes](./G2_install_README.txt) on installing the G2_Daily_lite or full python packages in this directory.    
   c. [code powerpoint](./Code_overview.pptx)  
 
 Next: [Feb 2](./Feb_2) Lee Altenberg - Exponential growth model and methods to obtain confidence intervals  

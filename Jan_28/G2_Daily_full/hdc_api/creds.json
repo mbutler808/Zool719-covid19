@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hdc-covid-dashboard-data",
+  "private_key_id": "ea734151d1c419dffa97dbe55480d84d88bc8449",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC+uhH4Zz0C8QGD\nFcU20touDQXm7tiMli8lPi7AcZb2Rjl7vpZ3oqSIykW8ZeU+huT9HTa9CO95pdJj\nCDNiTVcgvimNmfleicMbm4HARei9v9tbOJ2iQ51lyOWYjx2oJ3T/y+OltTL2eHFs\njGaebCF7VVsSjUIiGEEklABHr2TwoYMkVWtDKtS3JEbitdQDlW2OcZerqnlxdLLG\nnz9CxFXEvl8sctT9/7QwuAiCAmS8Au+3ILuYUfq0AMVmbqDDk09crQArITKASfma\nFyTQ3C6JU/q7lq6IJk143Y8p/8/6CD+fGVAFkFGtJ7iXUnp9xbMV/KVQqqqe/T3R\n0n2ImIlhAgMBAAECggEABd9jQrFJX2yZUBsKbbiBnXJh7BHFpC8b7vH9/z6Es6i0\n42h11b8NOAnkGDu+rOxo0L6mmwp35KGkZKrxwqnAi9J6kTVA/3qzuJllQpX7VRvN\nbH7YIyNqRDSOKBl3cc327ltkl6/2Q2WMbam1VlS33urPHdvC5ptsb8gbIKw38zrH\nJUsz+a4QiqhV6cOXRPWL81HSXYitdBivrYjJDd4MIT4F6r0Jr/5+yPkqk99M5UwG\nrtZNVRf8JVEH2WihQK0g12EUat+lGmZ/pFFWZfwmVA65AUN59nXJX7eijLyej5q2\nQiOpPxHQmY82EqZEoXEliwO0YqpxVT2zmZFhGQEtewKBgQDeCBGQ8iNi5+R6GZnd\n5sJq+JGL5GlXRHWzwOy8nm8Rborx8NfqmIfdIHXJVMGXUknp4v8rwNnW8BYbV89M\nz9Hx58I/W1DB06VJdzV2plCE/mFyF7HseBprfV5m7YwiXKPtHupSgPO0UwWM/B5D\n/m/RxfsGLGY7jt92fX7cxfBvLwKBgQDb5/G9C1Ab2+ox4fAEbsPDBFjgoIdV5Fch\niYV9cHXjnxmy2zs+SOs/8l7iVeRSWlGfg1bsI3TBq9ObzUN1dZ+gW5Tm5QdUUJdq\nnJBOhB0WvHsX9ev6iKJTqPZY2+WbxXImTIGZ/fm13uRjtyScBj77uY+cpeXGuE4G\nWJRHoHfsbwKBgFYFjEC6/2i/bS69Inbtg5+MJF+to/5ygKOe+FlvjJqVWHG6HP1A\nEUtj2x6gnsxwzkA2eSRLeFqk8/ut/pvE3JM7dm+zgktGI4CeFfGdKA8Ou1RHx+BU\n++9vSBbaq/NYLw6cbq5+VW0kyT7BIzy2pD4C1Wmj5AvpI7y1jGQesDNzAoGBAKJn\nWZBTmoX4k6zjP28GnmyX+UtrQoecavzJo1xQgb/o8AG3BrmpAJPpW0msRULMkRtM\n1BTw2nltfInDvd4xUAINoJok6pTKMAj8N1bFGvZ/nCjF5dDQt5ExZz2YqKmx1+uQ\n9OXVO2WlhuZdixvvQPSGxhjaLCfmVTk6kceUKvzhAoGBANsmm2S5e29ZSEBW7ZtU\nwFjcEPTDIvWa+VKK3hFQE/prrQNAnXfEH4742EUOL477oiR4WxXA3r8V9jKZXemh\nCorlrZpoO/SWRJz32WkTtC3RfLizrb2xHy90chHEf87e158KWcMX68IUWIHJkfhM\nG/uqImOmfTFvu9/C4o/aMA+U\n-----END PRIVATE KEY-----\n",
+  "client_email": "levi-891@hdc-covid-dashboard-data.iam.gserviceaccount.com",
+  "client_id": "116833859087027962939",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/levi-891%40hdc-covid-dashboard-data.iam.gserviceaccount.com"
+}
