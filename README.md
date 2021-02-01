@@ -4,34 +4,34 @@ See [Schedule here](https://docs.google.com/spreadsheets/d/1NJWmhJHhY_MuPiSu9Oii
 
 1. January 12 Organizational meeting
 
-2. [January 19](./Jan_19) Literature sharing  
+2. [January 19](./Jan_19) Literature sharing
 
-3. [January 28](./Jan_28) Victoria Fan Group - Hawaii COVID19 model and Forecasting  
+3. [January 28](./Jan_28) Victoria Fan Group - Hawaii COVID19 model and Forecasting
 
-4. [February 2](./Feb_2) Lee Altenberg - Exponential growth model and methods to obtain confidence intervals  
+4. [February 2](./Feb_2) Lee Altenberg - Exponential growth model and methods to obtain confidence intervals
 
-5. February 9 Tom Blamey - Auto Regressive Model and Ensemble thoughts  
+5. February 9 Tom Blamey - Auto Regressive Model and Ensemble thoughts
 
-6. February 18 **Thursday at 4:30pm** at HiPAM community meeting - Thomas Lee - Approaches to modeling COVID19 in Hawaii  
+6. February 18 **Thursday at 4:30pm** at HiPAM community meeting - Thomas Lee - Approaches to modeling COVID19 in Hawaii
 
-7. February 24 **Wednesday at 1** Istvan Svapudi - Heterogeneity in SIR epidemics modeling: superspreaders and herd immunity  
+7. February 24 **Wednesday at 1** Istvan Svapudi - Heterogeneity in SIR epidemics modeling: superspreaders and herd immunity
 
-8. March 2  
+8. March 2
 
-9. March 9 Monique Chyba group - Hawaii Mathematical Modeling of Vaccination  
+9. March 9 Monique Chyba group - Hawaii Mathematical Modeling of Vaccination
 
-10. March 16 SPRING BREAK  
+10. March 16 SPRING BREAK
 
-11. March 23  
+11. March 23
 
-12. March 30  
+12. March 30
 
-13. April 6  
+13. April 6
 
-14. April 13  
+14. April 13
 
-15. April 20  
+15. April 20
 
-16. April 27  Student Presentations  
+16. April 27  Student Presentations
 
 17. May 4  Student Presentations   
