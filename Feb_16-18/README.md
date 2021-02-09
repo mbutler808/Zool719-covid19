@@ -18,6 +18,6 @@ Libraries:
   * pmdarima
 
 
-Next: [February 18](Feb_16-18) **Thursday at 4:30pm** at HiPAM community meeting - Thomas Lee - Approaches to modeling COVID19 in Hawaii  
+Next: February 18 **Thursday at 4:30pm** at HiPAM community meeting - Thomas Lee - Approaches to modeling COVID19 in Hawaii  
 
 Back to [home](..)  
