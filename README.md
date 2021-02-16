@@ -10,11 +10,11 @@ See [Schedule here](https://docs.google.com/spreadsheets/d/1NJWmhJHhY_MuPiSu9Oii
 
 4. [February 2](./Feb_2) Lee Altenberg - Exponential growth model and methods to obtain confidence intervals
 
-5. February 9 Tom Blamey - Auto Regressive Model and Ensemble thoughts
+5. [February 9](./Feb_9) Tom Blamey - Auto Regressive Model and Ensemble thoughts
 
-6. February 18 **Thursday at 4:30pm** at HiPAM community meeting - Thomas Lee - Approaches to modeling COVID19 in Hawaii
+6. [February 18](./Feb_16-18) **Thursday at 4:30pm** at HiPAM community meeting - Thomas Lee - Approaches to modeling COVID19 in Hawaii
 
-7. February 24 **Wednesday at 1** Istvan Svapudi - Heterogeneity in SIR epidemics modeling: superspreaders and herd immunity
+7. [February 24](./Feb_24) **Wednesday at 1** Istvan Svapudi - Heterogeneity in SIR epidemics modeling: superspreaders and herd immunity
 
 8. March 2
 
