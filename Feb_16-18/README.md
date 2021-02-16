@@ -10,7 +10,11 @@ Discuss SEIR modeling approaches:
 PublishedOnline December 7, 2020 https://doi.org/10.1016/ S2589-7500(20)30268-5  
 
 ## Guest Lecture by Dr. Thomas Lee at 4:30pm Thursday
-**Thursday at 4:30pm** at HiPAM community meeting - Thomas Lee - Approaches to modeling COVID19 in Hawaii
+**Thursday at 4:30pm** at HiPAM community meeting - Thomas Lee - Approaches to modeling COVID19 in Hawaii  
+
+Please click this URL to join. https://us02web.zoom.us/j/85916928572?pwd=TzA1R2xtSzg0eDFWcEl1Q2FNeFZwUT09
+Webinar ID: 859 1692 8572
+Passcode: 008390  
 
 
 Next: February 24 **WEDNESDAY at 1pm**  - [Istvan Szapudi](Feb_24) - Heterogeneity in SIR epidemics modeling: superspreaders and herd immunity  
