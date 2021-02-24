@@ -9,7 +9,7 @@ Deterministic epidemic models, such as the Susceptible-Infected-Recovered (SIR) 
 **Paper:**  
 Szapudi, I. (2020) Heterogeneity in SIR epidemics modeling: superspreaders and herd immunity. *Appl Netw Sci* 5:93 https://doi.org/10.1007/s41109-020-00336-5
 
-
+**Code:** Python: `nsir.py`
 
 
 Next Week: [March 2](Mar_2)  
