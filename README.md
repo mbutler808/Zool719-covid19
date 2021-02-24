@@ -16,13 +16,13 @@ See [Schedule here](https://docs.google.com/spreadsheets/d/1NJWmhJHhY_MuPiSu9Oii
 
 7. [February 24](./Feb_24) **Wednesday at 1** Istvan Svapudi - Heterogeneity in SIR epidemics modeling: superspreaders and herd immunity
 
-8. March 2
+8. [March 2](./Mar_2) Howard Shen - Adaptive Immunity and why mRNA vaccines are expected to be better
 
-9. March 9 Monique Chyba group - Hawaii Mathematical Modeling of Vaccination
+9. [March 9](./Mar_9) Monique Chyba group - Hawaii Mathematical Modeling of Vaccination
 
 10. March 16 SPRING BREAK
 
-11. March 23
+11. March 23 Marguerite Butler - Introduction to the POMP package in R for modeling SIR with stochasticity
 
 12. March 30
 
