@@ -14,4 +14,4 @@ Szapudi, I. (2020) Heterogeneity in SIR epidemics modeling: superspreaders and h
 
 Next Week: [March 2](Mar_2)  
 
-Back to [home](..)  
+Back to [home](https://github.com/mbutler808/Zool719-covid19/)  

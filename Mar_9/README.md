@@ -18,4 +18,4 @@ Libraries:
 Next: March 23 Marguerite Butler will introduce the POMP package for incorporating stochasticish into SIR models  
 NOTE: March 16 is SPRING BREAK
 
-Back to [home](..)  
+Back to [home](https://github.com/mbutler808/Zool719-covid19/)  

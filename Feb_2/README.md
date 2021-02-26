@@ -54,4 +54,4 @@ eval(varT)
 
 
 Next: Feb 9 at 11:00 Tom Blamey - Auto Regressive Model and Ensemble thoughts  
-Back to [home](..)  
+Back to [home](https://github.com/mbutler808/Zool719-covid19/)  

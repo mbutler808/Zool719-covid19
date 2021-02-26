@@ -20,4 +20,4 @@ Libraries:
 
 Next: [February 18](Feb_16-18) **Thursday at 4:30pm** at HiPAM community meeting - Thomas Lee - Approaches to modeling COVID19 in Hawaii  
 
-Back to [home](..)  
+Back to [home](https://github.com/mbutler808/Zool719-covid19/)  

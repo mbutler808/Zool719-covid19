@@ -9,4 +9,4 @@
   * [Kemp, S. A., et al. 2020](https://doi.org/10.1101/2020.12.05.20241927). _Neutralising antibodies in Spike mediated SARS-CoV-2 adaptation_   The first evidence of in vivo SARS-CoV-2 escape from passive antibodies and a cautionary tale for convalescent plasma use on late-stage infection. Typically convalescent plasma is used only in the earliest stages, and repeated use is not recommended.   
 
 Next: [January 28](./Jan_28) Hawaii COVID19 model and Forecasting  
-Back to [home](..)  
+Back to [home](https://github.com/mbutler808/Zool719-covid19/)  

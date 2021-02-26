@@ -14,4 +14,4 @@ the Design of Spike-Based Vaccine Immunogens. Frontiers in Immunology. published
 
 Next: [March 9](./Mar_9) **Tuesday at 10:30am** - Monique Chyba and Group - Hawaii Mathematical Modeling of Vaccination in Hawaii  
 
-Back to [home](..)  
+Back to [home](https://github.com/mbutler808/Zool719-covid19/)  

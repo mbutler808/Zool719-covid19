@@ -19,4 +19,4 @@ Passcode: 008390
 
 Next: February 24 **WEDNESDAY at 1pm**  - [Istvan Szapudi](Feb_24) - Heterogeneity in SIR epidemics modeling: superspreaders and herd immunity  
 
-Back to [home](..)  
+Back to [home](https://github.com/mbutler808/Zool719-covid19/)  
