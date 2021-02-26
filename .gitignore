@@ -38,5 +38,5 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# Everyting in Not tracked
+# Extra files of junk
 /Not_Tracked/
