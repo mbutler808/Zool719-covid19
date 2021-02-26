@@ -4,7 +4,7 @@
 
 Dr. Howard Shen will give us a "crash course" on how our adaptive immunity works to better understand how vaccines work, and why the new mRNA vaccines are potentially much more effective.  
 
-Readings:
+**Readings:**
 1. [Duan L. et al. (2020)](Duan_2020_Frontiers_in_Immunology.pdf) The SARS-CoV-2 Spike Glycoprotein Biosynthesis, Structure, Function, and Antigenicity: Implications for
 the Design of Spike-Based Vaccine Immunogens. Frontiers in Immunology. published: 07 October 2020 https://doi.org/10.3389/fimmu.2020.576622  
 
