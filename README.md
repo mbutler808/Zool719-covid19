@@ -22,7 +22,7 @@ See [Schedule here](https://docs.google.com/spreadsheets/d/1NJWmhJHhY_MuPiSu9Oii
 
 10. March 16 SPRING BREAK
 
-11. March 23 Marguerite Butler - Introduction to the POMP package in R for modeling SIR with stochasticity
+11. [March 23](./Mar_23) Marguerite Butler - Introduction to the POMP package in R for modeling SIR with stochasticity
 
 12. March 30
 
