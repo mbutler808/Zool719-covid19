@@ -19,7 +19,8 @@ Follow [Installation Instructions](https://kingaa.github.io/sbied/prep/)
 
 We will spend the class running the models and discussing how to apply it to problems of interest in Hawaii. Good examples [here](https://kingaa.github.io/pomp/docs.html) on Measles, Simulation-based inference, and model based inference. There is an Ebola example as well under Sumulation-based inference.
 
-
+Recent paper using POMP to model SARS-Cov-2
+[Kain et al., 2021](./KainChildBeckerMordecai2021.pdf) Chopping the tail: How preventing superspreading can help to maintain COVID-19 control. Epidemics 34: 100430 https://doi.org/10.1016/j.epidem.2020.100430
 
 Language: R  
 Libraries:  
