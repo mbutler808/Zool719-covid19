@@ -164,7 +164,9 @@ rick %>% pomp(rprocess=euler(vpstep,delta.t=1/365)) -> vp    # note time step
 
 # can we plot this pomp object?
 
-
+##
+## Exercise: The following codes produce several simulations for parameters r=0.5, K=2000, σ=0.1 and b=0.1, and plot them on the same axes as the data. Notice that the format="data.frame" and include.data=TRUE options facilitate this. Vary the parameters to try to achieve a better fit to the data, as judged purely "by eye".
+##
 
 vp %>%
   simulate(
@@ -174,3 +176,5 @@ vp %>%
   ggplot(aes(x=year,y=pop,group=.id,color=ds))+
   geom_line()+
   labs(color="")
+  
+
