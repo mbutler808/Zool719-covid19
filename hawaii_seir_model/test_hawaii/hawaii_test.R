@@ -67,3 +67,26 @@ sims = covid %>%
 
 ggplot(sims, aes(x = day, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE)
+
+
+pf <- replicate(n=20,logLik(pfilter(covid, Np = 500, 
+                           params = c(Beta = 7.75, mu_EI = 0.001, mu_IR = .04, k = 0.42,
+                                      rho = 400, eta = 0.2, N = 15000),
+                           partrans = parameter_trans( 
+                             log = c("Beta", "mu_EI", "mu_IR", "k", "rho")),
+                           dmeasure = Csnippet(covid_dmeasure), 
+                           statenames = covid_statenames,
+                           paramnames = covid_paramnames)))
+
+beta7.75 <- logmeanexp(pf, se =T)
+
+pf <- replicate(n=20,logLik(pfilter(covid, Np = 500, 
+                                    params = c(Beta = 8, mu_EI = 0.001, mu_IR = .04, k = 0.42,
+                                               rho = 400, eta = 0.2, N = 15000),
+                                    partrans = parameter_trans( 
+                                      log = c("Beta", "mu_EI", "mu_IR", "k", "rho")),
+                                    dmeasure = Csnippet(covid_dmeasure), 
+                                    statenames = covid_statenames,
+                                    paramnames = covid_paramnames)))
+
+beta8 <- logmeanexp(pf, se =T)
