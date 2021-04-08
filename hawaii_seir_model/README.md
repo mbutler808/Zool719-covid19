@@ -15,6 +15,30 @@ Feel free to work with them and see what you can add.
 
 -Ethan
 
+###  4/1/21
+
+Timeline of events:
+2020:
+- March 23: stay at home order
+	- effective until May 31
+- April 17: state beaches closed
+- April 23: face mask mandate
+- May 16: Honolulu beaches reopen
+- June 5: restaurants re-open for dining in
+- June 8: All state beaches reopen
+- June 19: Honolulu gyms, recreation areas, bars open
+- July 14: Bars/Restaurants stop selling alcohol at midnight
+- July 31: Honolulu bars close, restaurants close at 10PM
+- August 18: no social gatherings, group limits to 5 or less
+- August 27: 2nd stay at home order on O'ahu
+	- effective two weeks
+- October 15: Safe travels program
+- October 22: Honolulu moves to Tier 2 (groups of 5 can be from diff. households, gyms/arcades open at 25% capacity)
+- December 15: First vaccine administered
+2021:
+- February 25: Honolulu moves to Tier 3 (groups of 10 or less)
+
+-Claire
 
 ###  4/6/21
 
