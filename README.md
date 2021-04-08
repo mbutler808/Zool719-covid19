@@ -24,14 +24,14 @@ See [Schedule here](https://docs.google.com/spreadsheets/d/1NJWmhJHhY_MuPiSu9Oii
 
 11. [March 23](./Mar_23) Marguerite Butler - Introduction to the POMP package in R for modeling SIR with stochasticity
 
-12. March 30
+12. March 30 continued from March 23
 
-13. April 6
+13. [April 8](./Apr_8) Ethan Hill - Geographic analysis of SARS-CoV-2 spread in Hawaii with genomics
 
-14. April 13
+14. April 13 Implementing Tomʻs & Leeʻs models in R
 
-15. April 20
+15. April 20 Trying to implement vaccination
 
-16. April 27  Student Presentations
+16. April 27 Claire Fraser  
 
-17. May 4  Student Presentations   
+17. May 4  Randi Rollins    
