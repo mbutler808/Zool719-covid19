@@ -123,8 +123,10 @@ I = 100;
 R = 50;
 "
 
+### There is no covid_rprocess_t2, _t3, etc. so I replaced them all with covid_rprocess_t1
+
 covid_t2 <- pomp(data = data_t2, times = "day", t0 = 0,
-              rprocess = euler(step.fun = Csnippet(covid_rprocess_t2), delta.t = 1/7),
+              rprocess = euler(step.fun = Csnippet(covid_rprocess_t1), delta.t = 1/7),
               rmeasure = Csnippet(covid_rmeasure),
               dmeasure = Csnippet(covid_dmeasure),
               partrans = parameter_trans( 
@@ -183,7 +185,7 @@ R = 100;
 "
 
 covid_t3 <- pomp(data = data_t3, times = "day", t0 = 0,
-              rprocess = euler(step.fun = Csnippet(covid_rprocess), delta.t = 1/7),
+              rprocess = euler(step.fun = Csnippet(covid_rprocess_t1), delta.t = 1/7),
               rmeasure = Csnippet(covid_rmeasure),
               dmeasure = Csnippet(covid_dmeasure),
               partrans = parameter_trans( 
@@ -240,7 +242,7 @@ R = 200;
 "
 
 covid_t4 <- pomp(data = data_t4, times = "day", t0 = 0,
-              rprocess = euler(step.fun = Csnippet(covid_rprocess), delta.t = 1/7),
+              rprocess = euler(step.fun = Csnippet(covid_rprocess_t1), delta.t = 1/7),
               rmeasure = Csnippet(covid_rmeasure),
               dmeasure = Csnippet(covid_dmeasure),
               partrans = parameter_trans( 
@@ -296,7 +298,7 @@ R = 20000;
 "
 
 covid_t5 <- pomp(data = data_t5, times = "day", t0 = 0,
-              rprocess = euler(step.fun = Csnippet(covid_rprocess), delta.t = 1/7),
+              rprocess = euler(step.fun = Csnippet(covid_rprocess_t1), delta.t = 1/7),
               rmeasure = Csnippet(covid_rmeasure),
               dmeasure = Csnippet(covid_dmeasure),
               partrans = parameter_trans( 
