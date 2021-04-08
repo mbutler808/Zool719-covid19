@@ -12,3 +12,17 @@ In the "test_hawaii" directory there is a script called "hawaii_test.R" that att
 Feel free to work with them and see what you can add. 
 
 -Ethan
+
+
+4/6/21
+
+I updated the script that Ethan shared last week and broke up the dates into 4 groups (we can always adjust these dates depending on what you guys think):
+1. from start of pandemic until May 31 (first lockdown)
+June 1, 2020 to July 31, 2020 (end of stay at home order, beaches/restaurants open, close again)
+2. August 1, 2020 to October 15, 2020 (Limited social gatherings, second stay at home order on August 27, Safe travels start October 15)
+3. October 16, 2020 to December 15, 2020 (Start of Safe travels program to first administered vaccine)
+4. December 16, 2020 to March 28, 2021 (First vaccine administration to present)
+
+I'm not sure yet how we can merge these blocks of time, but in the meantime I summed the case counts from the previous time block to the next to reflect the increase in case count. I tried playing around with the parameters as well to line up with the data as best I could, but we should consider what changes make sense based on interventions.
+
+-Claire
