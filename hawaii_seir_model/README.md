@@ -72,4 +72,6 @@ Last week I gathered data on daily COVID-19 vaccine administration in Hawaii. Th
 
 I merged the individual time plots into a single ggplot for a better viewing experience! This can be found at file 'hawaii_test_CF_RR.R'
 
+https://data.news-leader.com/covid-19-vaccine-tracker/hawaii/15/
+
 -Randi
