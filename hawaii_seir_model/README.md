@@ -65,3 +65,11 @@ I made one small edit to Claireʻs code. There was no separate rprocess defined 
 Can someone edit the ggplots so that we can see the plots side by side?
 
 -Marguerite
+
+### 04/13/2021
+
+Last week I gathered data on daily COVID-19 vaccine administration in Hawaii. The data begins December 24th. I made modifications to Ethan and Claire's .R code to include vaccines into the model. Vaccines are introduced at the current 'Time 5' in our model. I have not completed the integration of vaccine data into the model. 
+
+I merged the individual time plots into a single ggplot for a better viewing experience! This can be found at file 'hawaii_test_CF_RR.R'
+
+-Randi
