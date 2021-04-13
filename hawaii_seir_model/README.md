@@ -70,6 +70,6 @@ Can someone edit the ggplots so that we can see the plots side by side?
 
 Last week I gathered data on daily COVID-19 vaccine administration in Hawaii. The data begins December 24th. I made modifications to Ethan and Claire's .R code to include vaccines into the model. Vaccines are introduced at the current 'Time 5' in our model. I have not completed the integration of vaccine data into the model. 
 
-I will also edit the ggplots for a better viewing experience! 
+I merged the individual time plots into a single ggplot for a better viewing experience! 
 
 -Randi
