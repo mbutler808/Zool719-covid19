@@ -85,3 +85,11 @@ Working on this I noticed a few things, I'll mention them below:
 
 4/19/2021  This paper does a good job incorporating vaccine info and loss of vaccine immunity into an SEIR model. https://aip.scitation.org/doi/pdf/10.1063/1.5054525  And this one: https://pdxscholar.library.pdx.edu/cgi/viewcontent.cgi?article=1909&context=honorstheses
 -Randi
+
+
+### 04/14/2021 to 4/20/2020
+
+I spent some time trying to integrate the estimates at the end of each point as starting values for the next time point and I found some interesting things
+1) It works fairly well for time points t1 to t3
+2) For t4 and t5 it begins to fall apart. It looks like the input starting values from the previous time estimates starts the model on an exponential down slope implying that the majority of the populatoin was already infected
+3) I havent found a good way to carry R objects into C, so I manually put in the starting values from the previous run

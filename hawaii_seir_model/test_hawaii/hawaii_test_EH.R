@@ -7,13 +7,13 @@ vax <- read.csv("Hawaii_vaccine_data.csv", fileEncoding = "UTF-8-BOM")
 
 COUNTY = "Honolulu"
 
-data = read.csv("hawaii_covid_cases.csv")
+data = read.csv("../hawaii_covid_cases.csv")
 data = data %>% 
   select(-c(New.Positive.Tests, Total.Test.Encounters)) %>%
   filter(County == COUNTY)
 data <- data[-1]  
 
-data_t1 <- data[1:35,] #from start until May 31
+data_t1 <- data[1:23,] #from start until March 23
 #start to end of first lockdown
 
 data_t1$Date <- as.Date(data_t1$Date, format = "%m/%d/%Y")
@@ -32,12 +32,12 @@ ggplot(data_t1, aes(x = date, y = C)) + geom_line() +
 
 
 ###Vax plot not showing line :/
-ggplot(vax, aes(full_vax, percent_full)) + geom_line() 
-ggplot(vax, aes(x=date, y=percent_full)) + geom_line() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# ggplot(vax, aes(full_vax, percent_full)) + geom_line() 
+# ggplot(vax, aes(x=date, y=percent_full)) + geom_line() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-covid_statenames = c("S", "E", "I", "R", "V")
-covid_paramnames = c("Beta", "mu_EI", "rho", "mu_IR", "N", "eta", "k", "dvax")
+covid_statenames = c("S", "E", "I", "R")
+covid_paramnames = c("Beta", "mu_EI", "rho", "mu_IR", "N", "eta", "k")
 covid_obsnames = "C"
 
 covid_dmeasure_t1 = "lik = dpois(C, rho*I + 1e-6, give_log);"
@@ -48,12 +48,10 @@ covid_rprocess_t1 = "
 double dN_SE = rbinom(S, 1-exp(-Beta*I/N*dt));
 double dN_EI = rbinom(E, 1-exp(-mu_EI*dt));
 double dN_IR = rbinom(I, 1-exp(-mu_IR*dt));
-double dN_SV = rbinom(S, 1-exp(-dvax*dt));
 S -= dN_SE;
 E += dN_SE - dN_EI;
 I += dN_EI - dN_IR;
 R += dN_IR;
-V += dN_SV;
 "
 #Beta = contact rate
 #mu_EI = incubation rate
@@ -67,7 +65,6 @@ S = 2500;
 E = 1;
 I = 1;
 R = 0;
-V = 0;
 "
 
 covid_t1 <- pomp(data = data_t1, times = "day", t0 = 0,
@@ -75,7 +72,7 @@ covid_t1 <- pomp(data = data_t1, times = "day", t0 = 0,
                  rmeasure = Csnippet(covid_rmeasure_t1),
                  dmeasure = Csnippet(covid_dmeasure_t1),
                  partrans = parameter_trans( 
-                   log=c("Beta","mu_EI","mu_IR", "k", "rho", "dvax")),
+                   log=c("Beta","mu_EI","mu_IR", "k", "rho")),
                  obsnames = covid_obsnames,
                  statenames = covid_statenames,
                  paramnames = covid_paramnames,
@@ -89,8 +86,8 @@ covid_t1 <- pomp(data = data_t1, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t1 = covid_t1 %>%
-  simulate(params = c(Beta = 8, mu_EI = 0.01, mu_IR = .05, k = 0.42,
-                      rho = 15, eta = 0.5, N = 15000, dvax=0),
+  simulate(params = c(Beta = 20, mu_EI = 0.15, mu_IR = .05, k = 0.4,
+                      rho = 2, eta = 0.5, N = 150000),
            nsim = 20, format = "data.frame", include = TRUE)
 
 ggplot(sims_t1, aes(x = day, y = C, group = .id, color = .id=="data")) +
@@ -100,19 +97,18 @@ sims_t1
 ends <- grep("20",sims_t1$day)
 sims_t1_end <- sims_t1[ends,]
 
-t1_s <- mean(sims_t1_end$S, na.rm = T)
-t1_e <- mean(sims_t1_end$E, na.rm = T)
-t1_i <- mean(sims_t1_end$I, na.rm = T)
-t1_r <- mean(sims_t1_end$R, na.rm = T)
+t1_s <- round(mean(sims_t1_end$S, na.rm = T))
+t1_e <- round(mean(sims_t1_end$E, na.rm = T))
+t1_i <- round(mean(sims_t1_end$I, na.rm = T))
+t1_r <- round(mean(sims_t1_end$R, na.rm = T))
 
 
 ########################
 #set t1.5
-# April 5 to June 6
-#
-#
+# March 23, 2020 to April 23, 2020
 
-data_t1.5 <- data[36:92,] #from start until May 31
+
+data_t1.5 <- data[23:54,] #from start until May 31
 #start to end of first lockdown
 
 data_t1.5$Date <- as.Date(data_t1.5$Date, format = "%m/%d/%Y")
@@ -130,24 +126,22 @@ ggplot(data_t1.5, aes(x = date, y = C)) + geom_line() +
   ylab("Total Cases") + ggtitle("Daily Confirmed Cases of COVID-19 in", paste(COUNTY))
 
 
-covid_statenames = c("S", "E", "I", "R", "V")
-covid_paramnames = c("Beta", "mu_EI", "rho", "mu_IR", "N", "eta", "k", "dvax")
+covid_statenames = c("S", "E", "I", "R")
+covid_paramnames = c("Beta", "mu_EI", "rho", "mu_IR", "N", "eta", "k")
 covid_obsnames = "C"
 
-covid_dmeasure_t1.5 = "lik = dpois(C, rho*I + 1e-6, give_log);"
+covid_dmeasure = "lik = dpois(C, rho*I + 1e-6, give_log);"
 
-covid_rmeasure_t1.5 = "C = rnbinom(rho*I, k);"
+covid_rmeasure = "C = rnbinom(rho*I, k);"
 
-covid_rprocess_t1.5 = "
+covid_rprocess = "
 double dN_SE = rbinom(S, 1-exp(-Beta*I/N*dt));
 double dN_EI = rbinom(E, 1-exp(-mu_EI*dt));
 double dN_IR = rbinom(I, 1-exp(-mu_IR*dt));
-double dN_SV = rbinom(S, 1-exp(-dvax*dt));
 S -= dN_SE;
 E += dN_SE - dN_EI;
 I += dN_EI - dN_IR;
 R += dN_IR;
-V += dN_SV;
 "
 #Beta = contact rate
 #mu_EI = incubation rate
@@ -157,23 +151,30 @@ V += dN_SV;
 #eta = number of susceptible (estimated)
 
 covid_rinit_t1.5 = "
-S = t1_s;
-E = t1_e;
-I = t1_i;
-R = t1_r;
-V = 0;
+S = 2478;
+E = 11;
+I = 10;
+R = 4;
 "
 
+# covid_rinit_t1.5 = "
+# int t1_s;
+# S = &t1_s;
+# E = 11;
+# I = 10;
+# R = 4;
+# "
+
 covid_t1.5 <- pomp(data = data_t1.5, times = "day", t0 = 0,
-                 rprocess = euler(step.fun = Csnippet(covid_rprocess_t1), delta.t = 1/7),
-                 rmeasure = Csnippet(covid_rmeasure_t1.5),
-                 dmeasure = Csnippet(covid_dmeasure_t1.5),
+                 rprocess = euler(step.fun = Csnippet(covid_rprocess), delta.t = 1/7),
+                 rmeasure = Csnippet(covid_rmeasure),
+                 dmeasure = Csnippet(covid_dmeasure),
                  partrans = parameter_trans( 
-                   log=c("Beta","mu_EI","mu_IR", "k", "rho", "dvax")),
+                   log=c("Beta","mu_EI","mu_IR", "k", "rho")),
                  obsnames = covid_obsnames,
                  statenames = covid_statenames,
                  paramnames = covid_paramnames,
-                 rinit = Csnippet(covid_rinit_t1)
+                 rinit = Csnippet(covid_rinit_t1.5)
 )
 #Beta = contact rate
 #mu_EI = incubation rate
@@ -183,12 +184,23 @@ covid_t1.5 <- pomp(data = data_t1.5, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t1.5 = covid_t1.5 %>%
-  simulate(params = c(Beta = 5, mu_EI = 0.003, mu_IR = .01, k = 0.3,
-                      rho = 10, eta = 0.9, N = 15000, dvax=0),
+  simulate(params = c(Beta = 15, mu_EI = 0.03, mu_IR = .2, k = 0.42,
+                      rho = 1.2, eta = 0.3, N = 15000),
            nsim = 20, format = "data.frame", include = TRUE)
 
 ggplot(sims_t1.5, aes(x = day, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE)
+
+
+sims_t1.5
+ends <- grep("20",sims_t1.5$day)
+sims_t1.5_end <- sims_t1.5[ends,]
+
+t_s <- round(mean(sims_t1.5_end$S, na.rm = T))
+t_e <- round(mean(sims_t1.5_end$E, na.rm = T))
+t_i <- round(mean(sims_t1.5_end$I, na.rm = T))
+t_r <- round(mean(sims_t1.5_end$R, na.rm = T))
+
 
 ########################
 #set t2
@@ -229,10 +241,10 @@ ggplot(data_t2, aes(x = date, y = C)) + geom_line() +
 
 
 covid_rinit_t2 = "
-S = 2000;
-E = 200;
-I = 100;
-R = 50;
+S = 1334;
+E = 945;
+I = 94;
+R = 130;
 "
 
 ### There is no covid_rprocess_t2, _t3, etc. so I replaced them all with covid_rprocess_t1
@@ -256,12 +268,21 @@ covid_t2 <- pomp(data = data_t2, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t2 = covid_t2 %>%
-  simulate(params = c(Beta = 2, mu_EI = 0.01, mu_IR = .04, k = 0.42,
-                      rho = 7, eta = 0.3, N = 15000),
+  simulate(params = c(Beta = 1, mu_EI = 0.01, mu_IR = .04, k = 0.42,
+                      rho = 6, eta = 0.3, N = 15000),
            nsim = 20, format = "data.frame", include = TRUE)
 
 ggplot(sims_t2, aes(x = day, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE)
+
+sims_t2
+ends <- grep("20",sims_t2$day)
+sims_t2_end <- sims_t2[ends,]
+
+t_s <- round(mean(sims_t2_end$S, na.rm = T))
+t_e <- round(mean(sims_t2_end$E, na.rm = T))
+t_i <- round(mean(sims_t2_end$I, na.rm = T))
+t_r <- round(mean(sims_t2_end$R, na.rm = T))
 
 ########################
 #set t3
@@ -290,10 +311,10 @@ ggplot(data_t3, aes(x = date, y = C)) + geom_line() +
 
 
 covid_rinit_t3 = "
-S = 3500;
-E = 200;
-I = 150;
-R = 100;
+S = 1115;
+E = 978;
+I = 169;
+R = 241;
 "
 
 covid_t3 <- pomp(data = data_t3, times = "day", t0 = 0,
@@ -315,12 +336,21 @@ covid_t3 <- pomp(data = data_t3, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t3 = covid_t3 %>%
-  simulate(params = c(Beta = 3, mu_EI = 0.009, mu_IR = .04, k = 0.42,
-                      rho = 20, eta = 0.3, N = 15000),
+  simulate(params = c(Beta = 7, mu_EI = 0.01, mu_IR = .01, k = 0.42,
+                      rho = 13, eta = 0.3, N = 15000),
            nsim = 20, format = "data.frame", include = TRUE)
 
 ggplot(sims_t3, aes(x = day, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE)
+
+sims_t3
+ends <- grep("20",sims_t3$day)
+sims_t3_end <- sims_t3[ends,]
+
+t_s <- round(mean(sims_t3_end$S, na.rm = T))
+t_e <- round(mean(sims_t3_end$E, na.rm = T))
+t_i <- round(mean(sims_t3_end$I, na.rm = T))
+t_r <- round(mean(sims_t3_end$R, na.rm = T))
 
 ########################
 #set t4
@@ -378,6 +408,15 @@ sims_t4 = covid_t4 %>%
 ggplot(sims_t4, aes(x = day, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE)
 
+
+sims_t4
+ends <- grep("20",sims_t4$day)
+sims_t4_end <- sims_t4[ends,]
+
+t_s <- round(mean(sims_t4_end$S, na.rm = T))
+t_e <- round(mean(sims_t4_end$E, na.rm = T))
+t_i <- round(mean(sims_t4_end$I, na.rm = T))
+t_r <- round(mean(sims_t4_end$R, na.rm = T))
 ########################
 #set t5
 #December 16, 2020 to March 28, 2021
@@ -388,17 +427,17 @@ data_t5 <- data[291:393,]
 data_t5$Date <- as.Date(data_t5$Date, format = "%m/%d/%Y")
 
 #shorten vax data to match dataframe size
-vax1 <- head(vax, -12)
+# vax1 <- head(vax, -12)
 
 size <- dim(data_t5)[1]
 
 data_t5$day <- c(1:size)
 
 #merge vax dataframe with cases dataframe
-data_t5 <- cbind(data_t5, new_col = vax1$percent_partial)
+# data_t5 <- cbind(data_t5, new_col = vax1$percent_partial)
 
 
-names(data_t5) <- c("date", "C", "day", "%pvax")
+names(data_t5) <- c("date", "C", "day")
 
 data_t5$C[1] <- sum(data_sum$C[290:291])
 
@@ -413,7 +452,6 @@ S = 3000;
 E = 200;
 I = 200;
 R = 20000;
-V = 0;
 "
 
 covid_t5 <- pomp(data = data_t5, times = "day", t0 = 0,
@@ -421,7 +459,7 @@ covid_t5 <- pomp(data = data_t5, times = "day", t0 = 0,
                  rmeasure = Csnippet(covid_rmeasure_t1),
                  dmeasure = Csnippet(covid_dmeasure_t1),
                  partrans = parameter_trans( 
-                   log=c("Beta","mu_EI","mu_IR", "k", "rho", "dvax")),
+                   log=c("Beta","mu_EI","mu_IR", "k", "rho")),
                  obsnames = covid_obsnames,
                  statenames = covid_statenames,
                  paramnames = covid_paramnames,
@@ -436,8 +474,8 @@ spy(covid_t5)
 #eta = number of susceptible (estimated)
 
 sims_t5 = covid_t5 %>%
-  simulate(params = c(Beta = 1.5, mu_EI = 0.008, mu_IR = .045, k = 0.42,
-                      rho = 125, eta = 0.3, N = 15000, dvax=0),
+  simulate(params = c(Beta = 1, mu_EI = 0.0001, mu_IR = .0025, k = 0.3,
+                      rho = 75, eta = 0.3, N = 15000, dvax=0),
            nsim = 20, format = "data.frame", include = TRUE)
 
 ggplot(sims_t5, aes(x = day, y = C, group = .id, color = .id=="data")) +

@@ -13,7 +13,7 @@ data = data %>%
 data$C <- with(data, c(data$C[1], data$C[-1]-data$C[-nrow(data)]))
 
 
-ggplot(data, aes(x = date, y = new_cases)) + geom_line() + 
+ggplot(data, aes(x = date, y = C)) + geom_line() + 
   ylab("New Cases") + ggtitle("Daily Confirmed Cases of COVID-19 in Italy")
 
 covid_statenames = c("S", "E", "I", "R")
