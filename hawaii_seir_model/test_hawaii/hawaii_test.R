@@ -80,8 +80,8 @@ pf <- replicate(n=20,logLik(pfilter(covid, Np = 500,
 
 beta7.75 <- logmeanexp(pf, se =T)
 
-pf <- replicate(n=20,logLik(pfilter(covid, Np = 500, 
-                                    params = c(Beta = 8, mu_EI = 0.001, mu_IR = .04, k = 0.42,
+pf <- replicate(n=5,logLik(pfilter(covid, Np = 500, 
+                                    params = c(Beta = 10, mu_EI = 0.001, mu_IR = .04, k = 0.42,
                                                rho = 400, eta = 0.2, N = 15000),
                                     partrans = parameter_trans( 
                                       log = c("Beta", "mu_EI", "mu_IR", "k", "rho")),
