@@ -82,3 +82,6 @@ Working on this I noticed a few things, I'll mention them below:
 1. The hawaii_covid_cases_data.csv begins with Feb 15. The next date is Feb. 28th, then March 2nd. All rows after this are daily. Should we truncate the data file and begin on March 2nd? 
 2. Also, I am still unsure about the simulation params('N' and 'eta') and what appropriate numbers would be. When I set N=2502 (thinking it is total population), I get very high numbers in the 'E' bin at the end of simulation t1.5. Almost the entire population is in the 'E' bin! If I keep 'N' at 15000, the numbers are more reasonable.
 
+
+4/19/2021  This paper does a good job incorporating vaccine info and loss of vaccine immunity into an SEIR model. https://aip.scitation.org/doi/pdf/10.1063/1.5054525  
+-Randi
