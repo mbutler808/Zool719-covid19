@@ -76,35 +76,34 @@ covid_t1 <- pomp(data = data_t1, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t1 = covid_t1 %>%
-  simulate(params = c(Beta = 3, mu_EI = 0.01, mu_IR = .01, k = 0.42,
-                      rho = 3, eta = .3, N = 15000),
+  simulate(params = c(Beta = 250, mu_EI = .05, mu_IR = 0.005, k = 0.2,
+                      rho = .5, eta=0, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
-ggplot(sims_t1, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
+temp <- c( data$date[1:22], rep(data$date[1:22], each=20))
+test  <- cbind(sims_t1, temp)
+
+ggplot(test, aes(x = temp, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
 
-t1_s <- round(mean(sims_t1$S, na.rm =T))
-t1_e <- round(mean(sims_t1$E, na.rm =T))
-t1_i <- round(mean(sims_t1$I, na.rm =T))
-t1_r <- round(mean(sims_t1$R, na.rm =T))
-
-
-
-
+t_s <- round(mean(sims_t1$S, na.rm =T))
+t_e <- round(mean(sims_t1$E, na.rm =T))
+t_i <- round(mean(sims_t1$I, na.rm =T))
+t_r <- round(mean(sims_t1$R, na.rm =T))
 
 #############################
 #TIME 1.5
-data_t1.5 <- data[23:92,] #First lockdown begins. From March 23 - May 31st
+data_t1.5 <- data[23:54,] #First lockdown begins. From March 23 - May 31st
 
 ggplot(data_t1.5, aes(x = date, y = C)) + geom_line() + 
   ylab("Total Cases") + ggtitle("Daily Confirmed Cases of COVID-19 in", paste(COUNTY))
 
 
 covid_rinit_t1.5 = "
-S = 2390;
-E = 105;
-I = 7;
+S = 2476;
+E = 20;
+I = 6;
 R = 0;
 "
 
@@ -127,20 +126,72 @@ covid_t1.5 <- pomp(data = data_t1.5, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t1.5 = covid_t1.5 %>%
-  simulate(params = c(Beta = 5, mu_EI = 0.005, mu_IR = .035, k = 0.42,
-                      rho = 1.35, eta = .3, N = 15000),
+  simulate(params = c(Beta = 100, mu_EI = 0.006, mu_IR = .0035, k = 0.6,
+                      rho = 20, eta = 0, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
-ggplot(sims_t1.5, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
 
-t1.5_s <- round(mean(sims_t1.5$S, na.rm =T))
-t1.5_e <- round(mean(sims_t1.5$E, na.rm =T))
-t1.5_i <- round(mean(sims_t1.5$I, na.rm =T))
-t1.5_r <- round(mean(sims_t1.5$R, na.rm =T))
+temp <- c( data$date[23:54], rep(data$date[23:54], each=20))
+test  <- cbind(sims_t1.5, temp)
+
+ggplot(test, aes(x = temp, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+
+t_s <- round(mean(sims_t1.5$S, na.rm =T))
+t_e <- round(mean(sims_t1.5$E, na.rm =T))
+t_i <- round(mean(sims_t1.5$I, na.rm =T))
+t_r <- round(mean(sims_t1.5$R, na.rm =T))
 
 
+#############################
+#TIME 1.6
+data_t1.6 <- data[55:92,] #First lockdown begins. From March 23 - May 31st
 
+ggplot(data_t1.6, aes(x = date, y = C)) + geom_line() + 
+  ylab("Total Cases") + ggtitle("Daily Confirmed Cases of COVID-19 in", paste(COUNTY))
+
+
+covid_rinit_t1.6 = "
+S = 2360;
+E = 121;
+I = 20;
+R = 0;
+"
+
+covid_t1.6 <- pomp(data = data_t1.6, times = "day", t0 = 0,
+                   rprocess = euler(step.fun = Csnippet(covid_rprocess), delta.t = 1/7),
+                   rmeasure = Csnippet(covid_rmeasure),
+                   dmeasure = Csnippet(covid_dmeasure),
+                   partrans = parameter_trans( 
+                     log=c("Beta","mu_EI","mu_IR", "k", "rho")),
+                   obsnames = covid_obsnames,
+                   statenames = covid_statenames,
+                   paramnames = covid_paramnames,
+                   rinit = Csnippet(covid_rinit_t1.6)
+)
+#Beta = contact rate
+#mu_EI = incubation rate
+#rho = reporting rate
+#mu_IR = recovery/removed rate
+#k = overdispersion in the counts process
+#eta = number of susceptible (estimated)
+
+sims_t1.6 = covid_t1.6 %>%
+  simulate(params = c(Beta = 2, mu_EI = 0.0005, mu_IR = .00035, k = 0.42,
+                      rho = 12, eta = 0, N = 900000),
+           nsim = 20, format = "data.frame", include = TRUE)
+
+temp <- c( data$date[55:92], rep(data$date[55:92], each=20))
+test  <- cbind(sims_t1.6, temp)
+
+ggplot(test, aes(x = temp, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+
+
+t_s <- round(mean(sims_t1.6$S, na.rm =T))
+t_e <- round(mean(sims_t1.6$E, na.rm =T))
+t_i <- round(mean(sims_t1.6$I, na.rm =T))
+t_r <- round(mean(sims_t1.6$R, na.rm =T))
 
 ########################
 #set t2
