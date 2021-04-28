@@ -80,17 +80,18 @@ sims_t1 = covid_t1 %>%
                       rho = .5, eta=0, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
-temp <- c( data$date[1:22], rep(data$date[1:22], each=20))
-test  <- cbind(sims_t1, temp)
+sims_t1$date <- c(data$date[1:22], rep(data$date[1:22], each=20))
 
-ggplot(test, aes(x = temp, y = C, group = .id, color = .id=="data")) +
+dat <- sims_t1
+
+ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
 
-t_s <- round(mean(sims_t1$S, na.rm =T))
-t_e <- round(mean(sims_t1$E, na.rm =T))
-t_i <- round(mean(sims_t1$I, na.rm =T))
-t_r <- round(mean(sims_t1$R, na.rm =T))
+t_s <- round(mean(dat$S, na.rm =T))
+t_e <- round(mean(dat$E, na.rm =T))
+t_i <- round(mean(dat$I, na.rm =T))
+t_r <- round(mean(dat$R, na.rm =T))
 
 #############################
 #TIME 1.5
@@ -130,17 +131,17 @@ sims_t1.5 = covid_t1.5 %>%
                       rho = 20, eta = 0, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
+sims_t1.5$date <- c(data$date[23:54], rep(data$date[23:54], each=20))
 
-temp <- c( data$date[23:54], rep(data$date[23:54], each=20))
-test  <- cbind(sims_t1.5, temp)
+dat <- sims_t1.5
 
-ggplot(test, aes(x = temp, y = C, group = .id, color = .id=="data")) +
+ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
-t_s <- round(mean(sims_t1.5$S, na.rm =T))
-t_e <- round(mean(sims_t1.5$E, na.rm =T))
-t_i <- round(mean(sims_t1.5$I, na.rm =T))
-t_r <- round(mean(sims_t1.5$R, na.rm =T))
+t_s <- round(mean(dat$S, na.rm =T))
+t_e <- round(mean(dat$E, na.rm =T))
+t_i <- round(mean(dat$I, na.rm =T))
+t_r <- round(mean(dat$R, na.rm =T))
 
 
 #############################
@@ -177,21 +178,22 @@ covid_t1.6 <- pomp(data = data_t1.6, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t1.6 = covid_t1.6 %>%
-  simulate(params = c(Beta = 2, mu_EI = 0.0005, mu_IR = .00035, k = 0.42,
+  simulate(params = c(Beta = 10, mu_EI = 0.0005, mu_IR = .00035, k = 0.42,
                       rho = 12, eta = 0, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
-temp <- c( data$date[55:92], rep(data$date[55:92], each=20))
-test  <- cbind(sims_t1.6, temp)
+sims_t1.6$date <- c(data$date[55:92], rep(data$date[55:92], each=20))
 
-ggplot(test, aes(x = temp, y = C, group = .id, color = .id=="data")) +
+dat <- sims_t1.6
+
+ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
 
-t_s <- round(mean(sims_t1.6$S, na.rm =T))
-t_e <- round(mean(sims_t1.6$E, na.rm =T))
-t_i <- round(mean(sims_t1.6$I, na.rm =T))
-t_r <- round(mean(sims_t1.6$R, na.rm =T))
+t_s <- round(mean(dat$S, na.rm =T))
+t_e <- round(mean(dat$E, na.rm =T))
+t_i <- round(mean(dat$I, na.rm =T))
+t_r <- round(mean(dat$R, na.rm =T))
 
 ########################
 #set t2
@@ -201,32 +203,15 @@ t_r <- round(mean(sims_t1.6$R, na.rm =T))
 
 data_t2 <- data[93:153,]
 
-#create cumulative case count for entire data set to include cases from previous time point
-#data_sum <- data
-
-#data_sum$Date <- as.Date(data_sum$Date, format = "%m/%d/%Y")
-
-#size <- dim(data_sum)[1]
-
-#data_sum$day <- c(1:size)
-
-#names(data_sum) <- c("date", "C", "day")
-
-#data_sum$C <- cumsum(data_sum$C)
-
-#data_t2$C[1] <- sum(data_sum$C[92:93])
-
-#data_t2$C <- cumsum(data_t2$C)
-
 ggplot(data_t2, aes(x = date, y = C)) + geom_line() + 
   ylab("Total Cases") + ggtitle("Daily Confirmed Cases of COVID-19 in", paste(COUNTY))
 
 
 covid_rinit_t2 = "
-S = 56;
-E = 1991;
-I = 215;
-R = 240;
+S = 2352;
+E = 125;
+I = 24;
+R = 1;
 "
 
 ### There is no covid_rprocess_t2, _t3, etc. so I replaced them all with covid_rprocess_t1
@@ -251,18 +236,21 @@ covid_t2 <- pomp(data = data_t2, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t2 = covid_t2 %>%
-  simulate(params = c(Beta = 2, mu_EI = 0.01, mu_IR = .04, k = 0.42,
-                      rho = 7, eta = 0.3, N = 15000),
+  simulate(params = c(Beta = 30, mu_EI = 0.1, mu_IR = .0004, k = 0.07,
+                      rho = .03, eta = 0, N = 9000000),
            nsim = 20, format = "data.frame", include = TRUE)
 
-ggplot(sims_t2, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
+sims_t2$date <- c(data$date[93:153], rep(data$date[93:153], each=20))
 
+dat <- sims_t2
 
-t2_s <- round(mean(sims_t2$S, na.rm =T))
-t2_e <- round(mean(sims_t2$E, na.rm =T))
-t2_i <- round(mean(sims_t2$I, na.rm =T))
-t2_r <- round(mean(sims_t2$R, na.rm =T))
+ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+
+t_s <- round(mean(dat$S, na.rm =T))
+t_e <- round(mean(dat$E, na.rm =T))
+t_i <- round(mean(dat$I, na.rm =T))
+t_r <- round(mean(dat$R, na.rm =T))
 
 
 
@@ -306,7 +294,7 @@ covid_t3 <- pomp(data = data_t3, times = "day", t0 = 0,
 
 sims_t3 = covid_t3 %>%
   simulate(params = c(Beta = 3, mu_EI = 0.009, mu_IR = .04, k = 0.42,
-                      rho = 20, eta = 0.3, N = 15000),
+                      rho = 20, eta = 0.3, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
 ggplot(sims_t3, aes(x = day, y = C, group = .id, color = .id=="data")) +
