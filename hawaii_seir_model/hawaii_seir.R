@@ -236,8 +236,8 @@ covid_t2 <- pomp(data = data_t2, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t2 = covid_t2 %>%
-  simulate(params = c(Beta = 30, mu_EI = 0.1, mu_IR = .0004, k = 0.07,
-                      rho = .03, eta = 0, N = 9000000),
+  simulate(params = c(Beta = 30, mu_EI = 0.01, mu_IR = .00004, k = 0.042,
+                      rho = .3, eta = 0, N = 9000000),
            nsim = 20, format = "data.frame", include = TRUE)
 
 sims_t2$date <- c(data$date[93:153], rep(data$date[93:153], each=20))
@@ -304,10 +304,10 @@ dat <- sims_t3
 ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
-t3_s <- round(mean(sims_t3$S, na.rm =T))
-t3_e <- round(mean(sims_t3$E, na.rm =T))
-t3_i <- round(mean(sims_t3$I, na.rm =T))
-t3_r <- round(mean(sims_t3$R, na.rm =T))
+t_s <- round(mean(sims_t3$S, na.rm =T))
+t_e <- round(mean(sims_t3$E, na.rm =T))
+t_i <- round(mean(sims_t3$I, na.rm =T))
+t_r <- round(mean(sims_t3$R, na.rm =T))
 
 
 
@@ -362,10 +362,10 @@ ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
 
-t4_s <- round(mean(sims_t4$S, na.rm =T))
-t4_e <- round(mean(sims_t4$E, na.rm =T))
-t4_i <- round(mean(sims_t4$I, na.rm =T))
-t4_r <- round(mean(sims_t4$R, na.rm =T))
+t_s <- round(mean(sims_t4$S, na.rm =T))
+t_e <- round(mean(sims_t4$E, na.rm =T))
+t_i <- round(mean(sims_t4$I, na.rm =T))
+t_r <- round(mean(sims_t4$R, na.rm =T))
 
 
 
@@ -418,10 +418,10 @@ dat <- sims_t5
 ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
   geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
-t5_s <- round(mean(sims_t5$S, na.rm =T))
-t5_e <- round(mean(sims_t5$E, na.rm =T))
-t5_i <- round(mean(sims_t5$I, na.rm =T))
-t5_r <- round(mean(sims_t5$R, na.rm =T))
+t_s <- round(mean(sims_t5$S, na.rm =T))
+t_e <- round(mean(sims_t5$E, na.rm =T))
+t_i <- round(mean(sims_t5$I, na.rm =T))
+t_r <- round(mean(sims_t5$R, na.rm =T))
 
 
 
