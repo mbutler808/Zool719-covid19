@@ -293,12 +293,16 @@ covid_t3 <- pomp(data = data_t3, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t3 = covid_t3 %>%
-  simulate(params = c(Beta = 3, mu_EI = 0.009, mu_IR = .04, k = 0.42,
-                      rho = 20, eta = 0.3, N = 900000),
+  simulate(params = c(Beta = 20, mu_EI = 0.009, mu_IR = .004, k = 0.042,
+                      rho = .2, eta = 0, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
-ggplot(sims_t3, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
+sims_t3$date <- c(data$date[154:229], rep(data$date[154:229], each=20))
+
+dat <- sims_t3
+
+ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
 t3_s <- round(mean(sims_t3$S, na.rm =T))
 t3_e <- round(mean(sims_t3$E, na.rm =T))
@@ -346,12 +350,16 @@ covid_t4 <- pomp(data = data_t4, times = "day", t0 = 0,
 #k = overdispersion in the counts process
 
 sims_t4 = covid_t4 %>%
-  simulate(params = c(Beta = 4.5, mu_EI = 0.01, mu_IR = .04, k = 0.42,
-                      rho = 15, eta = 0.3, N = 15000),
+  simulate(params = c(Beta = 10.5, mu_EI = 0.01, mu_IR = .0004, k = 0.42,
+                      rho = 6.75, eta = 0.3, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
-ggplot(sims_t4, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
+sims_t4$date <- c(data$date[230:290], rep(data$date[230:290], each=20))
+
+dat <- sims_t4
+
+ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
 
 t4_s <- round(mean(sims_t4$S, na.rm =T))
@@ -399,12 +407,16 @@ covid_t5 <- pomp(data = data_t5, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t5 = covid_t5 %>%
-  simulate(params = c(Beta = 1.5, mu_EI = 0.008, mu_IR = .045, k = 0.42,
-                      rho = 125, eta = 0.3, N = 15000),
+  simulate(params = c(Beta = 20, mu_EI = 0.008, mu_IR = .045, k = 0.42,
+                      rho = 200, eta = 0.3, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
-ggplot(sims_t5, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
+sims_t5$date <- c(data$date[291:393], rep(data$date[291:393], each=20))
+
+dat <- sims_t5
+
+ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
 
 t5_s <- round(mean(sims_t5$S, na.rm =T))
 t5_e <- round(mean(sims_t5$E, na.rm =T))
