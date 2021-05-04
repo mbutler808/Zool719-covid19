@@ -84,9 +84,10 @@ sims_t1$date <- c(data$date[1:22], rep(data$date[1:22], each=20))
 
 dat <- sims_t1
 
-ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+a <- ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases") + ylim(0,30000)
 
+a
 
 t_s <- round(mean(dat$S, na.rm =T))
 t_e <- round(mean(dat$E, na.rm =T))
@@ -135,8 +136,10 @@ sims_t1.5$date <- c(data$date[23:54], rep(data$date[23:54], each=20))
 
 dat <- sims_t1.5
 
-ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+b <- ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases") + ylim(0,30000)
+
+b
 
 t_s <- round(mean(dat$S, na.rm =T))
 t_e <- round(mean(dat$E, na.rm =T))
@@ -186,9 +189,10 @@ sims_t1.6$date <- c(data$date[55:92], rep(data$date[55:92], each=20))
 
 dat <- sims_t1.6
 
-ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+c <- ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases") + ylim(0,30000)
 
+c
 
 t_s <- round(mean(dat$S, na.rm =T))
 t_e <- round(mean(dat$E, na.rm =T))
@@ -244,8 +248,10 @@ sims_t2$date <- c(data$date[93:153], rep(data$date[93:153], each=20))
 
 dat <- sims_t2
 
-ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+d <- ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases") + ylim(0,30000)
+
+d
 
 t_s <- round(mean(dat$S, na.rm =T))
 t_e <- round(mean(dat$E, na.rm =T))
@@ -268,10 +274,10 @@ ggplot(data_t3, aes(x = date, y = C)) + geom_line() +
 
 
 covid_rinit_t3 = "
-S = 3500;
-E = 200;
-I = 150;
-R = 100;
+S = 2273;
+E = 88;
+I = 139;
+R = 1;
 "
 
 covid_t3 <- pomp(data = data_t3, times = "day", t0 = 0,
@@ -293,16 +299,18 @@ covid_t3 <- pomp(data = data_t3, times = "day", t0 = 0,
 #eta = number of susceptible (estimated)
 
 sims_t3 = covid_t3 %>%
-  simulate(params = c(Beta = 20, mu_EI = 0.009, mu_IR = .004, k = 0.042,
-                      rho = .2, eta = 0, N = 900000),
+  simulate(params = c(Beta = 20, mu_EI = 0.009, mu_IR = .0004, k = 0.042,
+                      rho = .3, eta = 10, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
 sims_t3$date <- c(data$date[154:229], rep(data$date[154:229], each=20))
 
 dat <- sims_t3
 
-ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+e <- ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases") + ylim(0,30000)
+
+e
 
 t_s <- round(mean(sims_t3$S, na.rm =T))
 t_e <- round(mean(sims_t3$E, na.rm =T))
@@ -326,10 +334,10 @@ ggplot(data_t4, aes(x = date, y = C)) + geom_line() +
 
 
 covid_rinit_t4 = "
-S = 2000;
-E = 250;
-I = 200;
-R = 200;
+S = 257;
+E = 975;
+I = 1225;
+R = 43;
 "
 
 covid_t4 <- pomp(data = data_t4, times = "day", t0 = 0,
@@ -350,17 +358,18 @@ covid_t4 <- pomp(data = data_t4, times = "day", t0 = 0,
 #k = overdispersion in the counts process
 
 sims_t4 = covid_t4 %>%
-  simulate(params = c(Beta = 10.5, mu_EI = 0.01, mu_IR = .0004, k = 0.42,
-                      rho = 6.75, eta = 0.3, N = 900000),
+  simulate(params = c(Beta = 15, mu_EI = 0.09, mu_IR = .004, k = .42,
+                      rho = 9, eta = 0.3, N = 900000),
            nsim = 20, format = "data.frame", include = TRUE)
 
 sims_t4$date <- c(data$date[230:290], rep(data$date[230:290], each=20))
 
 dat <- sims_t4
 
-ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+f <- ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases") + ylim(0,30000)
 
+f
 
 t_s <- round(mean(sims_t4$S, na.rm =T))
 t_e <- round(mean(sims_t4$E, na.rm =T))
@@ -415,8 +424,10 @@ sims_t5$date <- c(data$date[291:393], rep(data$date[291:393], each=20))
 
 dat <- sims_t5
 
-ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases")
+g <- ggplot(dat, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases") + ylim(0,30000)
+
+g
 
 t_s <- round(mean(sims_t5$S, na.rm =T))
 t_e <- round(mean(sims_t5$E, na.rm =T))
@@ -425,30 +436,33 @@ t_r <- round(mean(sims_t5$R, na.rm =T))
 
 
 
+allsims <- rbind(sims_t1, sims_t1.5, sims_t1.6, sims_t2, sims_t3, sims_t4, sims_t5)
 
+ggplot(allsims, aes(x = date, y = C, group = .id, color = .id=="data")) +
+  geom_line() + guides(color=FALSE) + labs(x = "Date") + labs(y = "Cases") + ylim(0,30000)
 
-
-pf <- replicate(n=20,logLik(pfilter(covid, Np = 500, 
-                           params = c(Beta = 7.75, mu_EI = 0.001, mu_IR = .04, k = 0.42,
-                                      rho = 400, eta = 0.2, N = 15000),
-                           partrans = parameter_trans( 
-                             log = c("Beta", "mu_EI", "mu_IR", "k", "rho")),
-                           dmeasure = Csnippet(covid_dmeasure), 
-                           statenames = covid_statenames,
-                           paramnames = covid_paramnames)))
-
-beta7.75 <- logmeanexp(pf, se =T)
-
-pf <- replicate(n=20,logLik(pfilter(covid, Np = 500, 
-                                    params = c(Beta = 8, mu_EI = 0.001, mu_IR = .04, k = 0.42,
-                                               rho = 400, eta = 0.2, N = 15000),
-                                    partrans = parameter_trans( 
-                                      log = c("Beta", "mu_EI", "mu_IR", "k", "rho")),
-                                    dmeasure = Csnippet(covid_dmeasure), 
-                                    statenames = covid_statenames,
-                                    paramnames = covid_paramnames)))
-
-beta8 <- logmeanexp(pf, se =T)
+# 
+# pf <- replicate(n=20,logLik(pfilter(covid, Np = 500, 
+#                            params = c(Beta = 7.75, mu_EI = 0.001, mu_IR = .04, k = 0.42,
+#                                       rho = 400, eta = 0.2, N = 15000),
+#                            partrans = parameter_trans( 
+#                              log = c("Beta", "mu_EI", "mu_IR", "k", "rho")),
+#                            dmeasure = Csnippet(covid_dmeasure), 
+#                            statenames = covid_statenames,
+#                            paramnames = covid_paramnames)))
+# 
+# beta7.75 <- logmeanexp(pf, se =T)
+# 
+# pf <- replicate(n=20,logLik(pfilter(covid, Np = 500, 
+#                                     params = c(Beta = 8, mu_EI = 0.001, mu_IR = .04, k = 0.42,
+#                                                rho = 400, eta = 0.2, N = 15000),
+#                                     partrans = parameter_trans( 
+#                                       log = c("Beta", "mu_EI", "mu_IR", "k", "rho")),
+#                                     dmeasure = Csnippet(covid_dmeasure), 
+#                                     statenames = covid_statenames,
+#                                     paramnames = covid_paramnames)))
+# 
+# beta8 <- logmeanexp(pf, se =T)
 
 
 #Merge plots into a single image
@@ -457,23 +471,12 @@ library(cowplot)
 #install.packages("ggpubr")
 library(ggpubr)
 
-a <- ggplot(sims_t5, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
-b <- ggplot(sims_t1.5, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
-c <- ggplot(sims_t5, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
-d <- ggplot(sims_t5, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
-e <- ggplot(sims_t5, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
-f <- ggplot(sims_t5, aes(x = day, y = C, group = .id, color = .id=="data")) +
-  geom_line() + guides(color=FALSE)
-
-ggarrange(a,b,c,d,e,f)
-ggarrange(a,b,c,d,e,f,
-          labels = c("A", "B", "C", "D", "E", "F"),
-          ncol = 3, nrow =2)
+pdf("hawaii_seir_graphs.pdf")
+ggarrange(a,b,c,d,e,f,g)
+ggarrange(a,b,c,d,e,f,g,
+          labels = c("A", "B", "C", "D", "E", "F","G"),
+          ncol = 7, nrow =1)
+dev.off()
 
 #Relabel each graph as "1", "2", etc. 
 ggarrange(a,b,c,d,e,f,
