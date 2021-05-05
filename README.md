@@ -32,6 +32,6 @@ See [Schedule here](https://docs.google.com/spreadsheets/d/1NJWmhJHhY_MuPiSu9Oii
 
 15. April 20 Trying to implement vaccination
 
-16. April 27 Claire Fraser  
+16. [April 27](./Apr_26) Claire Fraser  
 
-17. May 4  Randi Rollins    
+17. [May 4](./May_4)  Randi Rollins    
